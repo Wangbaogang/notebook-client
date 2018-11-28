@@ -5,7 +5,7 @@ import { Layout, Button } from "antd";
 import Search from "../../modules/search";
 import SizeBar from "../../modules/size-bar";
 import Editor from "../../modules/editor";
-
+import Catlog from "../../modules/catlog";
 const { Sider, Content, Footer, Header } = Layout;
 
 class Main extends Component {
@@ -19,6 +19,7 @@ class Main extends Component {
           }}
         >
           <Search />
+          <Catlog />
         </Sider>
         <Content style={{ borderLeft: "1px solid #ccc" }}>
           <Layout style={{ height: "100%" }}>
