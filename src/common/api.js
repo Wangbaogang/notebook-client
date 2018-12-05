@@ -1,5 +1,5 @@
 // will replace `xhr` with `fetch` api
-
+import {message} from 'antd'
 const _listen = (request) => {
 	return new Promise((resolve, reject) => {
 		request.onreadystatechange = () => {
@@ -8,6 +8,7 @@ const _listen = (request) => {
 				if(data.status === 0) {
 					resolve(data);
 				} else {
+					message.info(data.message || "未知错误")
 					reject(data);
 				}
 			}
@@ -18,7 +19,7 @@ const ajax = async function(options) {
 	const request = new XMLHttpRequest();
 	const prefix = "/api";
 	request.withCredentials = true
-	request.open("post", `${prefix}/${options.url}`);
+	request.open("post", `${prefix}/${options.url}`, true);
 	request.send(JSON.stringify(options.data));
 	return _listen(request);
 }

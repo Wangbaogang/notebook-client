@@ -52,10 +52,9 @@ class Login extends Component {
     Api.login({
       username: this.state.username,
       password: this.state.password
-    }).then(() => {
+    }).then((res) => {
       this.props.history.push("main");
-    }, (data) => {
-      message.info(data.failureMessage);
+      message.success(`您好，${res.username}。登陆成功！`);
     })
   }
 }
